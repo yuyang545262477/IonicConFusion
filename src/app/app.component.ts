@@ -14,7 +14,7 @@ import {MenuPage} from "../pages/menu/menu";
 export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = HomePage;
+  rootPage: any = AboutPage;
   pages: Array<{ title: string, icon: string, component: any }>;
 
   constructor(public platform: Platform,

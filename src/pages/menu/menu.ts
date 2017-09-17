@@ -28,7 +28,8 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
     this._dishService.getDishes()
-      .subscribe((dishes) => this.dishes = dishes,
+      .subscribe(
+        (dishes) => this.dishes = dishes,
         (errors) => this.errorMsg = <any>errors);
   }
 
