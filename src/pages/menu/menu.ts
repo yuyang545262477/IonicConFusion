@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DishProvider} from "../../providers/dish/dish";
 import {Dish} from "../../shared/dish";
+import {DishdetailPage} from "../dishdetail/dishdetail";
 
 /**
  * Generated class for the MenuPage page.
@@ -32,12 +33,13 @@ export class MenuPage implements OnInit {
   }
 
 
+  // noinspection JSUnusedGlobalSymbols
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
 
-  dishSelected() {
-    console.log('hello click');
+  dishSelected(event, dish) {
+    this.navCtrl.push(DishdetailPage, {dish})
   }
 
 }
