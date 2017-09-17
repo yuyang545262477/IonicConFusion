@@ -1,4 +1,5 @@
 import {ErrorHandler, NgModule} from '@angular/core';
+import {HttpModule} from "@angular/http";
 import {BrowserModule} from '@angular/platform-browser';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -8,6 +9,11 @@ import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 import {HomePage} from '../pages/home/home';
 import {MenuPage} from "../pages/menu/menu";
+import {DishProvider} from '../providers/dish/dish';
+import {LeaderProvider} from '../providers/leader/leader';
+import {ProcessHttpmsgProvider} from '../providers/process-httpmsg/process-httpmsg';
+import {PromotionProvider} from '../providers/promotion/promotion';
+import {baseURL} from "../shared/baseurl";
 
 import {MyApp} from './app.component';
 
@@ -21,6 +27,7 @@ import {MyApp} from './app.component';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -34,7 +41,12 @@ import {MyApp} from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    DishProvider,
+    LeaderProvider,
+    PromotionProvider,
+    ProcessHttpmsgProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: 'BaseURL', useValue: baseURL}
   ]
 })
 export class AppModule {
