@@ -54,5 +54,9 @@
       </p>
     </ion-item>
   </ion-list>
-
+  <ion-fab bottom right>
+    <button ion-fab (click)="addToFavorites()">
+      <ion-icon [name]="favorite?'heart':'heart-outline'"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

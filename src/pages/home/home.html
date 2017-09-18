@@ -75,10 +75,12 @@
       <ion-icon name="arrow-dropup"></ion-icon>
     </button>
     <ion-fab-list side="top">
-      <button *ngFor="let fsbItem of fsbList;let first=first" ion-fab [class]="'btn-'+fsbItem">
+      <button *ngFor="let fsbItem of fsbList;let first=first"
+              ion-fab [class]="'btn-'+fsbItem">
         <ion-icon *ngIf="first" [name]="fsbItem"></ion-icon>
         <ion-icon *ngIf="!first" [name]="'logo-'+fsbItem"></ion-icon>
       </button>
     </ion-fab-list>
   </ion-fab>
+
 </ion-content>

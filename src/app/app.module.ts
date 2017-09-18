@@ -17,6 +17,7 @@ import {PromotionProvider} from '../providers/promotion/promotion';
 import {baseURL} from "../shared/baseurl";
 
 import {MyApp} from './app.component';
+import {FavoriteProvider} from '../providers/favorite/favorite';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MyApp} from './app.component';
     PromotionProvider,
     ProcessHttpmsgProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: 'BaseURL', useValue: baseURL}
+    {provide: 'BaseURL', useValue: baseURL},
+    FavoriteProvider
   ]
 })
 export class AppModule {
