@@ -1,3 +1,19 @@
-page-home {
+$fsbList: (
+  'facebook':#3b5998,
+  'googleplus':#dd4b39,
+  'youtube':#ff4b39,
+  'linkedin':#007bb6,
+  'twitter':#55acee,
+  'mail':#512DA8
+);
 
+page-home {
+  /**@des render fsbList class*/
+  @each $property, $value in $fsbList {
+    .btn-#{$property} {
+      color: #ffffff !important;
+      background-color: #{$value} !important;
+      border-radius: 50%;
+    }
+  }
 }

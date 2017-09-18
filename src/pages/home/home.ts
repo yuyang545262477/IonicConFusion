@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   dishErrMess: string;
   promoErrMess: string;
   leaderErrMess: string;
+  fsbList = ['mail', 'googleplus', 'youtube', 'twitter', 'facebook', 'linkedin'];
 
 
   constructor(public navCtrl: NavController,
