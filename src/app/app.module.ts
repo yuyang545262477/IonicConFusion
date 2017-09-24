@@ -8,6 +8,7 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 import {DishdetailPage} from "../pages/dishdetail/dishdetail";
+import {FavoritesPage} from "../pages/favorites/favorites";
 import {HomePage} from '../pages/home/home';
 import {MenuPage} from "../pages/menu/menu";
 import {DishProvider} from '../providers/dish/dish';
@@ -17,6 +18,7 @@ import {PromotionProvider} from '../providers/promotion/promotion';
 import {baseURL} from "../shared/baseurl";
 
 import {MyApp} from './app.component';
+import {FavoriteProvider} from '../providers/favorite/favorite';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {MyApp} from './app.component';
     AboutPage,
     MenuPage,
     ContactPage,
+    FavoritesPage,
     DishdetailPage
   ],
   imports: [
@@ -39,6 +42,7 @@ import {MyApp} from './app.component';
     AboutPage,
     MenuPage,
     ContactPage,
+    FavoritesPage,
     DishdetailPage
   ],
   providers: [
@@ -49,7 +53,8 @@ import {MyApp} from './app.component';
     PromotionProvider,
     ProcessHttpmsgProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: 'BaseURL', useValue: baseURL}
+    {provide: 'BaseURL', useValue: baseURL},
+    FavoriteProvider
   ]
 })
 export class AppModule {
