@@ -6,6 +6,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {AboutPage} from "../pages/about/about";
+import {CommentPage} from "../pages/comment/comment";
 import {ContactPage} from "../pages/contact/contact";
 import {DishdetailPage} from "../pages/dishdetail/dishdetail";
 import {FavoritesPage} from "../pages/favorites/favorites";
@@ -31,7 +32,8 @@ import {MyApp} from './app.component';
     ContactPage,
     FavoritesPage,
     DishdetailPage,
-    ReservationPage
+    ReservationPage,
+    CommentPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import {MyApp} from './app.component';
     ContactPage,
     FavoritesPage,
     DishdetailPage,
-    ReservationPage
+    ReservationPage,
+    CommentPage
   ],
   providers: [
     StatusBar,

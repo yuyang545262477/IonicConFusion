@@ -1,7 +1,15 @@
 import {Component, Inject} from '@angular/core';
-import {ActionSheetController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {
+  ActionSheetController,
+  IonicPage,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController
+} from 'ionic-angular';
 import {FavoriteProvider} from "../../providers/favorite/favorite";
 import {Dish} from "../../shared/dish";
+import {CommentPage} from "../comment/comment";
 
 /**
  * Generated class for the DishdetailPage page.
@@ -27,7 +35,8 @@ export class DishdetailPage {
               private _favoriteService: FavoriteProvider,
               private _toastCtrl: ToastController,
               @Inject('BaseURL') private _baseUrl,
-              private _actionSheetCtrl: ActionSheetController) {
+              private _actionSheetCtrl: ActionSheetController,
+              private _modalCtrl: ModalController) {
     let Total = 0;
     this.dish = this.navParams.get('dish');
     this.favorite = this._favoriteService.isFavorite(this.dish.id);
@@ -67,7 +76,13 @@ export class DishdetailPage {
       }, {
         text: 'Add a Comment',
         handler: () => {
-          console.log('Comment clicked');
+          let commentPage = this._modalCtrl.create(CommentPage);
+          commentPage.present();
+          commentPage.onDidDismiss(data => {
+            if (!data) return;
+            this.dish.comments.push(data);
+          });
+
         }
       }, {
         text: 'Cancel',
