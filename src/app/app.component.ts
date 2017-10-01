@@ -16,7 +16,7 @@ import {ReservationPage} from "../pages/reservation/reservation";
 export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = HomePage;
+  rootPage: any = MenuPage;
   pages: Array<{ title: string, icon: string, component: any }>;
 
   constructor(public platform: Platform,
