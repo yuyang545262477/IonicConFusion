@@ -9,6 +9,7 @@ import {FavoritesPage} from "../pages/favorites/favorites";
 import {HomePage} from '../pages/home/home';
 import {MenuPage} from "../pages/menu/menu";
 import {ReservationPage} from "../pages/reservation/reservation";
+import {LoginPage} from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html'
@@ -55,4 +56,8 @@ export class MyApp {
     modal.present();
   }
 
+  openLogin() {
+    let model = this.modalCtrl.create(LoginPage);
+    model.present();
+  }
 }
