@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
+import {Storage} from "@ionic/storage";
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
 import {Dish} from "../../shared/dish";
@@ -14,16 +15,25 @@ import {DishProvider} from "../dish/dish";
 @Injectable()
 export class FavoriteProvider {
 
+  storageKey: string = 'favorites';
   favorites: Array<any>;
 
   constructor(public http: Http,
-              private _dishService: DishProvider) {
-    console.log('Hello FavoriteProvider Provider');
-    this.favorites = [];
+              private _dishService: DishProvider,
+              private _storage: Storage) {
+
+    this._storage.get(this.storageKey)
+      .then(favorites => {
+        this.favorites = favorites || [];
+      })
   }
 
   addFavorite(id: number): boolean {
-    if (!this.isFavorite(id)) this.favorites.push(id);
+    if (!this.isFavorite(id)) {
+      this.favorites.push(id);
+      this._storage.set(this.storageKey, this.favorites);
+    }
+
     return true;
 
   }
@@ -41,6 +51,7 @@ export class FavoriteProvider {
     let index = this.favorites.indexOf(id);
     if (index >= 0) {
       this.favorites.splice(index, 1);
+      this._storage.set(this.storageKey, this.favorites);
       return this.getFavorites();
     } else {
       console.log(`Deleting non-existent favorite ${id}`);
