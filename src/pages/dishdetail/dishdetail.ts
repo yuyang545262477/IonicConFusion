@@ -1,7 +1,15 @@
 import {Component, Inject} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {Dish} from "../../shared/dish";
+import {
+  ActionSheetController,
+  IonicPage,
+  ModalController,
+  NavController,
+  NavParams,
+  ToastController
+} from 'ionic-angular';
 import {FavoriteProvider} from "../../providers/favorite/favorite";
+import {Dish} from "../../shared/dish";
+import {CommentPage} from "../comment/comment";
 
 /**
  * Generated class for the DishdetailPage page.
@@ -20,20 +28,23 @@ export class DishdetailPage {
   errMsg: string;
   avgStars: string;
   numComments: number;
-  favorite: boolean;
+  favorite: boolean = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private _favoriteService: FavoriteProvider,
-              @Inject('BaseURL') private _baseUrl) {
+              private _toastCtrl: ToastController,
+              @Inject('BaseURL') private _baseUrl,
+              private _actionSheetCtrl: ActionSheetController,
+              private _modalCtrl: ModalController) {
     let Total = 0;
     this.dish = this.navParams.get('dish');
+    this.favorite = this._favoriteService.isFavorite(this.dish.id);
     this.numComments = this.dish.comments.length;
     //get total
     this.dish.comments.map((comment) => {
       Total += comment.rating;
     });
-    this.favorite = this._favoriteService.isFavorite(this.dish.id);
     //get avg stars;
     this.avgStars = (Total / this.numComments).toFixed(2);
 
@@ -44,10 +55,43 @@ export class DishdetailPage {
     console.log('ionViewDidLoad DishdetailPage');
   }
 
-  addToFavorites() {
-    if (this.favorite) return;
+  addFavorite() {
     console.log(`Add to Favorites ${this.dish.id}`);
     this.favorite = this._favoriteService.addFavorite(this.dish.id);
+    this._toastCtrl.create({
+      message: `Dish ${this.dish.id} added as a favorite successfully`,
+      position: 'middle',
+      duration: 3000
+    }).present();
   }
 
+
+  callActionSheet() {
+    let actionSheet = this._actionSheetCtrl.create({
+      buttons: [{
+        text: 'Add to Favorites',
+        handler: () => {
+          this.addFavorite();
+        }
+      }, {
+        text: 'Add a Comment',
+        handler: () => {
+          let commentPage = this._modalCtrl.create(CommentPage);
+          commentPage.present();
+          commentPage.onDidDismiss(data => {
+            if (!data) return;
+            this.dish.comments.push(data);
+          });
+
+        }
+      }, {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('cancel clicked');
+        }
+      }]
+    });
+    actionSheet.present();
+  }
 }
