@@ -1,11 +1,14 @@
 import {ErrorHandler, NgModule} from '@angular/core';
 import {HttpModule} from "@angular/http";
 import {BrowserModule} from '@angular/platform-browser';
+import {EmailComposer} from "@ionic-native/email-composer";
+import {LocalNotifications} from '@ionic-native/local-notifications';
 import {SplashScreen} from '@ionic-native/splash-screen';
-
 import {StatusBar} from '@ionic-native/status-bar';
 import {IonicStorageModule} from "@ionic/storage";
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+
+
 import {AboutPage} from "../pages/about/about";
 import {CommentPage} from "../pages/comment/comment";
 import {ContactPage} from "../pages/contact/contact";
@@ -22,9 +25,7 @@ import {LeaderProvider} from '../providers/leader/leader';
 import {ProcessHttpmsgProvider} from '../providers/process-httpmsg/process-httpmsg';
 import {PromotionProvider} from '../providers/promotion/promotion';
 import {baseURL} from "../shared/baseurl";
-
 import {MyApp} from './app.component';
-import {FavoriteProvider} from '../providers/favorite/favorite';
 
 @NgModule({
   declarations: [
@@ -61,13 +62,15 @@ import {FavoriteProvider} from '../providers/favorite/favorite';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     DishProvider,
     LeaderProvider,
     PromotionProvider,
     ProcessHttpmsgProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: 'BaseURL', useValue: baseURL},
-    FavoriteProvider
+    FavoriteProvider,
+    EmailComposer
   ]
 })
 export class AppModule {
