@@ -2,8 +2,9 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Storage} from "@ionic/storage";
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {User} from "../../shared/user";
+import {RegisterPage} from "../register/register";
 
 /**
  * Generated class for the LoginPage page.
@@ -25,6 +26,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private _viewCtrl: ViewController,
+              private modalCtrl: ModalController,
               private _formBuilder: FormBuilder,
               private _storage: Storage) {
     //    create reactive form
@@ -65,6 +67,14 @@ export class LoginPage {
 
     this._viewCtrl.dismiss();
 
+  }
+
+  openRegister() {
+    let modal = this.modalCtrl.create(RegisterPage);
+    modal.present();
+    modal.onDidDismiss(
+      () => this.dismiss()
+    );
   }
 
 

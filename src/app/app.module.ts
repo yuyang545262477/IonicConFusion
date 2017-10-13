@@ -26,6 +26,10 @@ import {ProcessHttpmsgProvider} from '../providers/process-httpmsg/process-httpm
 import {PromotionProvider} from '../providers/promotion/promotion';
 import {baseURL} from "../shared/baseurl";
 import {MyApp} from './app.component';
+import {SocialSharing} from "@ionic-native/social-sharing";
+import {Network} from "@ionic-native/network";
+import {RegisterPage} from "../pages/register/register";
+import {Camera} from "@ionic-native/camera";
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import {MyApp} from './app.component';
     DishdetailPage,
     ReservationPage,
     CommentPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import {MyApp} from './app.component';
     DishdetailPage,
     ReservationPage,
     CommentPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
@@ -70,7 +76,10 @@ import {MyApp} from './app.component';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: 'BaseURL', useValue: baseURL},
     FavoriteProvider,
-    EmailComposer
+    EmailComposer,
+    SocialSharing,
+    Network,
+    Camera
   ]
 })
 export class AppModule {

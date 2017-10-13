@@ -1,7 +1,7 @@
 import {Component, Inject, ViewChild} from "@angular/core";
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
-import {ModalController, Nav, Platform} from 'ionic-angular';
+import {LoadingController, ModalController, Nav, Platform} from 'ionic-angular';
 import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 import {FavoritesPage} from "../pages/favorites/favorites";
@@ -10,6 +10,7 @@ import {HomePage} from '../pages/home/home';
 import {LoginPage} from "../pages/login/login";
 import {MenuPage} from "../pages/menu/menu";
 import {ReservationPage} from "../pages/reservation/reservation";
+import {Network} from "@ionic-native/network";
 
 @Component({
   templateUrl: 'app.html'
@@ -19,12 +20,15 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = MenuPage;
   pages: Array<{ title: string, icon: string, component: any }>;
+  loading: any = null;
 
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public modalCtrl: ModalController,
-              @Inject('BaseURL') private _baseUrl) {
+              @Inject('BaseURL') private _baseUrl,
+              private loadCtrl: LoadingController,
+              private network: Network) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -43,6 +47,27 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      /*check disconnect*/
+      this.network.onDisconnect().subscribe(() => {
+        if (!this.loading) {
+          this.loading = this.loadCtrl.create({
+            content: 'NetWorking is Disconnected'
+          });
+          this.loading.present();
+        }
+      });
+      /*check reconnect*/
+      this.network.onConnect().subscribe(() => {
+        setTimeout(() => {
+          if (this.network.type === 'wifi') {
+            console.log('we got wifi connect');
+          }
+        }, 3000);
+        if (this.loading) {
+          this.loading.dismiss();
+          this.loading = null;
+        }
+      })
     });
   }
 

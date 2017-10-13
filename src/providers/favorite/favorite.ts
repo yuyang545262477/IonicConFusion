@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {LocalNotifications} from "@ionic-native/local-notifications/index";
 import {Storage} from "@ionic/storage";
+import {LocalNotifications} from "@ionic-native/local-notifications";
+
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
 import {Dish} from "../../shared/dish";

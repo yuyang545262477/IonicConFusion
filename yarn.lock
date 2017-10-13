@@ -48,6 +48,10 @@
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.12.1.tgz#5b7c7a4f5adfc8da0b9197e1843e5893acf66021"
 
+"@ionic-native/email-composer@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@ionic-native/email-composer/-/email-composer-4.3.1.tgz#bd9dd4b8ba82e68edc32318317619a78830dda4a"
+
 "@ionic-native/local-notifications@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@ionic-native/local-notifications/-/local-notifications-4.3.1.tgz#86c1b58774893b03be74dc450b61419f30bfc6d1"
@@ -1070,6 +1074,10 @@ cordova-plugin-console@^1.0.5:
 cordova-plugin-device@*, cordova-plugin-device@^1.1.4:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/cordova-plugin-device/-/cordova-plugin-device-1.1.6.tgz#2d21764cad7c9b801523e4e09a30e024b249334b"
+
+cordova-plugin-email-composer@^0.8.10:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-email-composer/-/cordova-plugin-email-composer-0.8.10.tgz#51b2edef3d2280e465976f467536a2de276bf991"
 
 cordova-plugin-email@^1.2.6:
   version "1.2.6"
