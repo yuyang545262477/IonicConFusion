@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Camera, CameraOptions} from "@ionic-native/camera";
+import {DomSanitizer} from "@angular/platform-browser";
 
 /**
  * Generated class for the RegisterPage page.
@@ -17,11 +18,12 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 })
 export class RegisterPage {
   registerForm: FormGroup;
-  image: string = "assets/images/logo.png";
+  image: string | any = "assets/images/logo.png";
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private viewCtrl: ViewController,
               private camera: Camera,
+              private sanitizer: DomSanitizer,
               private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
@@ -57,7 +59,6 @@ export class RegisterPage {
       .then(
         (imageData) => {
           this.image = imageData;
-          console.log(imageData);
 
         },
         (error) => {
