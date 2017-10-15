@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {NavController, NavParams, ToastController} from 'ionic-angular';
 import {DishProvider} from "../../providers/dish/dish";
 import {FavoriteProvider} from "../../providers/favorite/favorite";
 import {Dish} from "../../shared/dish";
@@ -12,7 +12,6 @@ import {DishdetailPage} from "../dishdetail/dishdetail";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html',

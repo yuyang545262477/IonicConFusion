@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {
   AlertController,
-  IonicPage,
   ItemSliding,
   LoadingController,
   NavController,
@@ -18,7 +17,6 @@ import {Dish} from "../../shared/dish";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-favorites',
   templateUrl: 'favorites.html',

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 
 /**
  * Generated class for the CommentPage page.
@@ -9,7 +9,6 @@ import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-comment',
   templateUrl: 'comment.html',

@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
+  
   <ion-toolbar color="primary-pale">
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -27,6 +27,9 @@
       <ion-row>
         <ion-col>
           <button ion-button small (click)="getPicture()">Take Picture</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button small (click)="getFromLibrary()">From Library</button>
         </ion-col>
       </ion-row>
     </ion-grid>

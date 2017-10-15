@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {EmailComposer} from "@ionic-native/email-composer";
+import {CallNumber} from "@ionic-native/call-number";
+import {NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the ContactPage page.
@@ -9,16 +9,17 @@ import {EmailComposer} from "@ionic-native/email-composer";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html',
 })
 export class ContactPage {
 
+  phone: string = '+852 1234 5678';
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private emailComposer: EmailComposer) {
+              private callNumber: CallNumber) {
   }
 
   ionViewDidLoad() {
@@ -26,14 +27,18 @@ export class ContactPage {
   }
 
   sendEmail() {
-    let email = {
-      to: 'confusion@food.net',
-      subject: '[ConFusion]: Query',
-      body: 'Dear Sir/Madam:',
-      isHtml: true
-    };
+    console.log('hello email');
     // Send a text message using default options
-    this.emailComposer.open(email);
+  }
+
+  callRestaurant() {
+    this.callNumber.callNumber(this.phone, true)
+      .then(() => {
+        console.log('call right');
+      })
+      .catch((error) => {
+        console.log(`error happen ${error}`);
+      })
   }
 
 }

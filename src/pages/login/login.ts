@@ -2,7 +2,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Storage} from "@ionic/storage";
-import {IonicPage, ModalController, NavController, NavParams, ViewController} from 'ionic-angular';
+import {ModalController, NavController, NavParams, ViewController} from 'ionic-angular';
 import {User} from "../../shared/user";
 import {RegisterPage} from "../register/register";
 
@@ -13,7 +13,6 @@ import {RegisterPage} from "../register/register";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

@@ -1,16 +1,9 @@
 import {Component, Inject} from '@angular/core';
-import {
-  ActionSheetController,
-  IonicPage,
-  ModalController,
-  NavController,
-  NavParams,
-  ToastController
-} from 'ionic-angular';
+import {SocialSharing} from "@ionic-native/social-sharing";
+import {ActionSheetController, ModalController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {FavoriteProvider} from "../../providers/favorite/favorite";
 import {Dish} from "../../shared/dish";
 import {CommentPage} from "../comment/comment";
-import {SocialSharing} from "@ionic-native/social-sharing";
 
 /**
  * Generated class for the DishdetailPage page.
@@ -19,7 +12,6 @@ import {SocialSharing} from "@ionic-native/social-sharing";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-dishdetail',
   templateUrl: 'dishdetail.html',
